@@ -348,7 +348,7 @@ let stringIndex = findIndex(["Mike", "Malcolm", "Andrea"], "Andrea")
 <a name="associated_types"></a>
 ## 关联类型
 
-定义一个协议时，有的时候声明一个或多个关联类型作为协议定义的一部分将会非常有用。关联类型作为协议的一部分，为某个类型提供了一个占位名（或者说别名），其代表的实际类型在协议被采纳时才会被指定。你可以通过 `typealias` 关键字来指定关联类型。
+定义一个协议时，有的时候声明一个或多个关联类型作为协议定义的一部分将会非常有用。关联类型作为协议的一部分，为某个类型提供了一个占位名，其代表的实际类型在协议被采纳时才会被指定。你可以通过 `associatedtype` 关键字来指定关联类型。
 
 <a name="associated_types_in_action"></a>
 ### 关联类型实践
@@ -357,7 +357,7 @@ let stringIndex = findIndex(["Mike", "Malcolm", "Andrea"], "Andrea")
 
 ```swift
 protocol Container {
-    typealias ItemType
+    associatedtype ItemType
     mutating func append(item: ItemType)
     var count: Int { get }
     subscript(i: Int) -> ItemType { get }
@@ -376,7 +376,7 @@ protocol Container {
 
 为了定义这三个条件，`Container` 协议需要在不知道容器中元素的具体类型的情况下引用这种类型。`Container` 协议需要指定任何通过 `append(_:)` 方法添加到容器中的元素和容器中的元素是相同类型，并且通过容器下标返回的元素的类型也是这种类型。
 
-为了达到此目的，`Container` 协议声明了一个关联类型 `ItemType`，写作 `typealias ItemType`。这个协议无法定义 `ItemType` 是什么类型的别名，这个信息将留给采纳协议的类型来提供。尽管如此，`ItemType` 别名提供了一种方式来引用 `Container` 中元素的类型，并将之用于 `append(_:)` 方法和下标，从而保证任何 `Container` 的预期行为都能够被执行。
+为了达到此目的，`Container` 协议声明了一个关联类型 `associatedtype`，写作 `typealias ItemType`。这个协议无法定义 `ItemType` 是什么类型的别名，这个信息将留给采纳协议的类型来提供。尽管如此，`ItemType` 别名提供了一种方式来引用 `Container` 中元素的类型，并将之用于 `append(_:)` 方法和下标，从而保证任何 `Container` 的预期行为都能够被执行。
 
 下面是先前的非泛型的 `IntStack` 类型，这一版本采纳并符合了 `Container` 协议：
 
