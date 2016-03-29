@@ -348,7 +348,7 @@ let stringIndex = findIndex(["Mike", "Malcolm", "Andrea"], "Andrea")
 <a name="associated_types"></a>
 ## 关联类型
 
-定义一个协议时，有的时候声明一个或多个关联类型作为协议定义的一部分将会非常有用。关联类型作为协议的一部分，为某个类型提供了一个占位名（或者说别名），其代表的实际类型在协议被采纳时才会被指定。你可以通过 `associatedtype` 关键字来指定关联类型。
+定义一个协议时，有的时候声明一个或多个关联类型作为协议定义的一部分将会非常有用。关联类型作为协议的一部分，为某个类型提供了一个占位名，其代表的实际类型在协议被采纳时才会被指定。你可以通过 `associatedtype` 关键字来指定关联类型。
 
 <a name="associated_types_in_action"></a>
 ### 关联类型实践
